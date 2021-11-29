@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+int	main(){
+	char *p="abcd";//定义一个指针p
+	char *q="abcd";//定义一个指针q
+	
+	cout<<&p<<endl;//输出p的地址
+	cout<<&q<<endl;//输出q的地址
+	
+	if(&p==&q)//判断p和q是否指向同一个地址
+		cout<<"p和q指向同一个位置"<<endl;
+	else
+		cout<<"p和q不指向同一个位置"<<endl;
+	return 0;
+}
+//结论：即使两个指针指向地址的值相同，由于系统分配的地址不同，所以*p和*q不同，故p和q不指向同一个地址

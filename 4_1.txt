@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+
+class Demo{
+public:
+    //构造函数
+    Demo(int num){
+		m_num = num;
+		cout<<"构造函数"<<endl;
+	}
+	//拷贝构造函数
+    Demo(const Demo &demo)
+    {
+        m_num=demo.m_num;
+        cout<<"拷贝构造函数"<<endl;
+    }
+
+	//赋值运算符重载
+    Demo& operator=(const Demo& demo){
+		m_num = demo.m_num;
+		cout<<"operator="<<endl;
+		return *this;
+	}
+ 
+	//析构函数
+	~Demo(){
+		cout<<"析构函数"<<endl;
+	}
+
+private:
+	int m_num;
+};
+
+int main(){
+	Demo a(100); // 产生一个实例，调用一次构造函数
+	Demo b=a;    // 调用拷贝构造函数，产生一个实例
+ 
+	Demo c(20);  // 产生一个实例，调用一次构造函数
+	c=a;	     // 调用赋值运算符重载
+    return 0;
+}

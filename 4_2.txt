@@ -1,0 +1,37 @@
+#include <iostream>
+#include <time.h>
+using namespace std;
+
+float temp;
+
+float fn1(float r){
+    temp=r*r*3.14;
+    return temp;
+} 
+float &fn2(float r){ //&说明返回的是temp的引用，换句话说就是返回temp本身
+    temp=r*r*3.14;
+    return temp;
+}
+
+int main(){
+	int sum_time1,sum_time2;
+	clock_t start_time,end_time;
+
+	start_time=clock();
+    float a=fn1(5.0); //返回值
+	end_time=clock();
+	sum_time1=end_time-start_time;
+
+	start_time=clock();
+    float &d=fn2(5.0);//用函数返回的引用作为新引用的初始化值
+	end_time=clock();
+	sum_time2=end_time-start_time;
+
+    cout<<a<<endl;//78.5
+    cout<<d<<endl;//78.5
+    cout<<sum_time1<<endl;
+    cout<<sum_time2<<endl;
+
+    return 0;
+}
+//结论：没有想出具体例子可以体现返回引用的效率更高，但是通过实验可以看出，返回值需要建立一个临时变量，而返回引用只需要将已有的变量返回，故返回引用节省时间和空间，因此效率更高

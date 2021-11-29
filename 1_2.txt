@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+
+int	main(){
+	char *p="abcd";//定义一个指针p
+	char *q="abcd";//定义一个指针q
+	char str[]="abcd";//定义一个字符数组str
+
+	cout<<p<<endl;
+	cout<<q<<endl;
+	cout<<str<<endl;
+	
+	cout<<*p<<endl;
+	cout<<*q<<endl;
+	cout<<*str<<endl;
+
+	cout<<&p<<endl;
+	cout<<&q<<endl;
+	cout<<&str<<endl;
+
+	cout<<(p+1)<<endl;
+	cout<<(q+1)<<endl;
+	cout<<(str+1)<<endl;
+	
+	cout<<*(p+1)<<endl;
+	cout<<*(q+1)<<endl;
+	cout<<*(str+1)<<endl;
+	
+	cout<<&str[1]<<endl;
+
+	return 0;
+}
+//结论：char *p和char *q各定义一个指针，编译器在内存的文字常量区分别分配一块内存，保存“abcd”这一字符串字面值，然后在栈上分配内存保存p和q，p和q的内容为“abcd”的地址，p和q可以指向其他对象，但是p和q指向的内容是常量，故不能修改；
+//结论：char str[]="abcd"定义了一个数组，编译器为其在栈上分配了内存空间，str可认为是一个常指针，str不可改变，但str指向的内容可以进行修改操作

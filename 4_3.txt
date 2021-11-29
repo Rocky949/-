@@ -1,0 +1,47 @@
+#include <iostream>
+#include <time.h>
+using namespace std;
+ 
+class Person{
+public:
+	Person(){//cout<<"Person()"<<endl;}
+	~Person(){//cout<<"~Person()"<<endl;}
+ 
+private:
+	string name,address;
+};
+
+class Student:public Person{
+public:
+	Student(){//cout<<"Student()"<<endl;}
+	~Student(){//cout<<"~Student()"<<endl;}
+ 
+private:
+	string schoolName,schoolAddress;
+};
+
+Student returnStudent_by_val(Student s){return s;}
+const Student& returnStudent_by_ref(const Student& s){return s;}
+ 
+int main(){
+	Student plato;
+	int sum_time1,sum_time2;
+	clock_t start_time,end_time;
+	start_time=clock();
+	for (int i=0;i<100000000;i++) {
+		returnStudent_by_val(plato);
+	}
+	end_time=clock();
+	sum_time1=end_time-start_time;
+
+	start_time=clock();
+	for (int j=0;j<100000000;j++) {
+		returnStudent_by_ref(plato);
+	}
+	end_time=clock();
+	sum_time2=end_time-start_time;
+
+	cout <<"returnStudent_by_val:花费了"<<sum_time1<<"微秒"<<endl;
+	cout <<"returnStudent_by_ref:花费了"<<sum_time2<<"微秒"<<endl;
+	return 0;
+}

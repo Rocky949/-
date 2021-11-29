@@ -1,0 +1,33 @@
+//#pragma pack(8)
+//#pragma pack(4)
+//#pragma pack(16)
+#pragma pack(2)
+#include <iostream>
+using namespace std;
+ 
+struct  SS{
+	double b;
+	char a;
+	int c;
+};
+ 
+struct  SSS{
+	char a;
+	//a的所占空间，为2时，所占空间为2,为4时，所占空间为4，8时，所占空间为8
+	double b;
+	int c;
+};
+ 
+union S{
+	double b;
+	char a;
+	int c;
+};
+ 
+int main(int argc,char** argv){
+	cout<<sizeof(SSS)<<endl;
+	cout<<sizeof(SS)<<endl;
+	cout<<sizeof(S)<<endl;
+	cin.get();
+	return 0;
+}

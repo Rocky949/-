@@ -1,0 +1,39 @@
+#include <iostream>
+#include <time.h>
+using namespace std;
+
+int	a(){
+	int i,temp,sum;
+	clock_t start_time1,end_time1,sum_time1;
+	sum=0;
+	start_time1=clock();
+	for(i=0;i<=10000;i++)
+		for(temp=0;temp<=100;temp++)
+			cout<<"1";
+	end_time1=clock();
+	sum_time1=end_time1-start_time1;
+	return sum_time1;
+}
+
+int	b(){
+	register int i,temp,sum;
+	clock_t start_time2,end_time2,sum_time2;
+	sum=0;
+	start_time2=clock();
+	for(i=0;i<=10000;i++)
+		for(temp=0;temp<=100;temp++)
+			cout<<"1";
+	end_time2=clock();
+	sum_time2=end_time2-start_time2;
+	return sum_time2;
+}
+
+int main(){
+	int a();
+	int b();
+	int timea=a();
+	int timeb=b();
+	cout<<endl<<"a运行时间为"<<timea<<"毫秒"<<endl;
+	cout<<endl<<"b运行时间为"<<timeb<<"毫秒"<<endl;
+	return 0;
+}
